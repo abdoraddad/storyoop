@@ -1,0 +1,139 @@
+class person:
+    def __init__(self, name, mood, money, health_rate="100%"):
+        self.name = name
+        self.money = money
+        self.mood = mood
+        self.health_rate = health_rate
+
+    @staticmethod
+    def sleep(hours):
+        if hours == 7:
+            person.mood = "happy"
+        elif hours < 7:
+            person.mood = "tired"
+        elif hours > 7:
+            person.mood = "lazy"
+
+    @staticmethod
+    def eat(meals):
+        if meals == 3:
+            person.health_rate = "100%"
+        elif meals == 2:
+            person.health_rate = "75%"
+        elif meals == 1:
+            person.health_rate = "50%"
+        else:
+            person.health_rate = "Unknown"
+
+    @staticmethod
+    def buy(items):
+        person.money -= (items * 10)
+
+    @staticmethod
+    def display():
+        print(f"your name is => {person.name}")
+        print(f"your mode is => {person.mood}")
+        print(f"your health rate is => {person.health_rate}")
+        print(f"your remaining money is => {person.money} LE")
+
+
+name = input("Enter your name: ").capitalize()
+hours = int(input("Enter hours of sleep: "))
+meals = int(input("Enter meals of day from 1 to 3: "))
+money = int(input("Enter your money: "))
+items = int(input("Enter items you buy: "))
+
+print("*" * 100)
+print((" " * 40) + "FROM PERSON CLASS")
+print((" " * 25) + ("*" * 50))
+person = person(name, "sad", money)
+person.sleep(hours)
+person.eat(meals)
+person.buy(items)
+person.display()
+
+print("*" * 100)
+
+
+class employee:
+    mood = ("happy", "tired", "lazy")
+
+    def __init__(self, iid, car, email, salary, distance_to_work):
+        self.iid = iid
+        self.car = car
+        self.email = email
+        self.salary = salary
+        if salary < 1000:
+            self.salary = 1000
+        else:
+            self.salary = salary
+        self.distance_to_work = distance_to_work
+
+    @staticmethod
+    def work(hours):
+        if hours == 8:
+            employee.mood = employee.mood[0]
+        elif hours > 8:
+            employee.mood = employee.mood[1]
+        elif hours < 8:
+            employee.mood = employee.mood[2]
+
+    @classmethod
+    def drive(cls, time, distance):
+        return distance / time
+
+    @staticmethod
+    def refuel(fuel_rate, gasAmount=100):
+        return gasAmount + fuel_rate
+
+    @classmethod
+    def send_mail(cls, fromm, to, msg, receiver_name):
+        cls.fromm = fromm
+        cls.to = to
+        cls.msg = msg
+        cls.receiver_name = receiver_name
+
+        print(
+            f" ------------------------------\n -------------MAIL-------------\n From: {fromm} \n To: {to} \n Hi, {receiver_name}"
+            f" \n {msg} \n thanks\n ------------------------------\n ------------------------------")
+
+    @staticmethod
+    def display():
+        print(f"your id is => {employee.iid}")
+        print(f"your email is => {employee.email}")
+        print(f"your car model is => {employee.car}")
+        print(f"your salary (from 1000 to more) is => {employee.salary} LE")
+        print(f"the distance to work is => {employee.distance_to_work} Km")
+        print(f"your Velocity (from drive method) is => {employee.drive(5, employee.distance_to_work)} Km/s")
+        print(f"your mood (from work method) is => {employee.mood}")
+
+
+employee = employee(5, "fait", "abdoraddad@gmail.com", 500, 20)
+employee.work(8)
+employee.refuel(50)
+
+print((" " * 40) + "FROM EMPLOYEE CLASS")
+print((" " * 25) + ("*" * 50))
+employee.display()
+print(employee.send_mail(employee.email, "mohammed@gmail.com", "This is an email template", "Mohammed"))
+
+class office:
+    def __init__(self, name, *employees):
+        self.name = name
+        self.employees = employees
+
+    @staticmethod
+    def get_all_employees():
+        print(" Your skills is: ")
+        for employee in office.employees:
+            print(f" => {employee}")
+
+    @staticmethod
+    def display_office():
+        print(f" your name is: {office.name}")
+
+
+skills = ["html", "css", "js"]
+office = office("abdo", *skills)
+office.display_office()
+office.get_all_employees()
