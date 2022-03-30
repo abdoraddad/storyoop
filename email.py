@@ -1,0 +1,12 @@
+
+email = open(r"C:\Users\user\PycharmProjects\modules\email.txt", "w")
+email.write(" -------------MAIL-------------\n")
+email.write(" From: abdoraddad@gmail.com\n")
+email.write(" To: mohammed@gmail.com\n")
+email.write(" Hi, Mohammed\n")
+email.write(" This is an email template\n")
+email.write(" thanks\n")
+email = open(r"C:\Users\user\PycharmProjects\modules\email.txt", "r")
+print(email.read())
+email = open(r"C:\Users\user\PycharmProjects\modules\email.txt", "a")
+print(" number of letters with lines: "+str(email.tell()))

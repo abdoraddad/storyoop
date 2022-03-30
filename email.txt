@@ -1,0 +1,6 @@
+ -------------MAIL-------------
+ From: abdoraddad@gmail.com
+ To: mohammed@gmail.com
+ Hi, Mohammed
+ This is an email template
+ thanks
